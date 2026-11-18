@@ -1,0 +1,11 @@
+{% extends "base.html" %}{% block title %}Post a report{% endblock %}{% block content %}
+<section class="page-hero"><div class="eyebrow">HELP IT FIND ITS WAY</div><h1>Post an item report</h1><p>Share only the details needed to identify the item. Keep private identifiers out of the public description.</p></section>
+<section class="form-page"><form method="post" enctype="multipart/form-data" class="panel form-stack">
+<div class="type-choice"><label><input type="radio" name="report_type" value="LOST" checked><span>⌕ <b>I lost something</b><small>Help me find my item</small></span></label><label><input type="radio" name="report_type" value="FOUND"><span>✧ <b>I found something</b><small>Help me find its owner</small></span></label></div>
+<label>Item title<input name="title" required maxlength="140" placeholder="e.g. Navy blue backpack"></label>
+<div class="form-row"><label>Category<select name="category" required><option value="">Choose a category</option>{% for c in ['Electronics','Wallet','Keys','Bag','Documents','Clothing','Jewellery','Other'] %}<option>{{ c }}</option>{% endfor %}</select></label><label>Date lost / found<input type="date" name="event_date" required max="{{ today or '' }}"></label></div>
+<label>Approximate location<input name="location" required maxlength="180" placeholder="e.g. Near Central Park, Chennai"></label>
+<label>Description<textarea name="description" required rows="5" placeholder="Describe visible features, colour or other useful details. Do not include serial numbers or personal ID details."></textarea></label>
+<label>Item photo <span class="optional">· optional, max 5 MB</span><input type="file" name="image" accept=".png,.jpg,.jpeg,.webp"></label>
+<div class="notice">🔐 Safety tip: Do not include your phone number, home address, ID number or a secret ownership detail in this public report.</div>
+<button class="btn btn-primary btn-full">Publish report ↗</button></form></section>{% endblock %}

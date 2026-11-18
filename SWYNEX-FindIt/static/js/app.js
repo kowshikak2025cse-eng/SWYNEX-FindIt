@@ -1,0 +1,13 @@
+document.addEventListener("DOMContentLoaded", () => {
+  const dateInput = document.querySelector('input[type="date"]');
+  if (dateInput && !dateInput.max) dateInput.max = new Date().toISOString().slice(0, 10);
+  document.querySelectorAll('input[type="file"]').forEach(input => {
+    input.addEventListener("change", () => {
+      const file = input.files[0];
+      if (file && file.size > 5 * 1024 * 1024) {
+        alert("Please choose an image smaller than 5 MB.");
+        input.value = "";
+      }
+    });
+  });
+});

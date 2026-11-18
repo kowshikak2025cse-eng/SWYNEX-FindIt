@@ -1,0 +1,4 @@
+<a class="item-card" href="{{ url_for('item_detail', item_id=item.id) }}">
+ <div class="item-photo">{% if item.image %}<img src="{{ url_for('static', filename='uploads/' + item.image) }}" alt="{{ item.title }}">{% else %}<div class="photo-placeholder">{{ {'Electronics':'⌁','Wallet':'▰','Keys':'⚿','Bag':'▱','Documents':'▤','Clothing':'◇'}.get(item.category, '✧') }}</div>{% endif %}<span class="type-pill {{ item.report_type|lower }}">{{ item.report_type|title }}</span></div>
+ <div class="item-info"><div class="item-category">{{ item.category }} <span>·</span> {{ item.event_date.strftime('%d %b %Y') }}</div><h3>{{ item.title }}</h3><p>⌖ {{ item.location }}</p><div class="card-bottom"><span>Posted by {{ item.owner.name.split(' ')[0] }}</span><b>View details ↗</b></div></div>
+</a>
